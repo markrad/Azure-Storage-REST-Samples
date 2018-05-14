@@ -1,3 +1,0 @@
-/home/markrad/projects/Azure-Storage-REST-Samples/List-Blobs/cmake/CMakeFiles/rebuild_cache.dir
-/home/markrad/projects/Azure-Storage-REST-Samples/List-Blobs/cmake/CMakeFiles/listblobs.dir
-/home/markrad/projects/Azure-Storage-REST-Samples/List-Blobs/cmake/CMakeFiles/edit_cache.dir
