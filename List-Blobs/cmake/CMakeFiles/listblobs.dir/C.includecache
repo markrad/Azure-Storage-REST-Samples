@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../common/inc/sha256.h
+stdint.h
+-
+
+/home/markrad/projects/Azure-Storage-REST-Samples/common/src/sha256.c
+stdint.h
+-
+string.h
+-
+sha256.h
+/home/markrad/projects/Azure-Storage-REST-Samples/common/src/sha256.h
+
