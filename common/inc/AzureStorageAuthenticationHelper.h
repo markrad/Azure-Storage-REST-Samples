@@ -39,4 +39,5 @@ public:
 	static int encodeBase64(const char *input, int inputLength, char *output, int outputLen);
 	static int decodeBase64(const char *input, char *output, int outputLen);
 	static int hashIt(const char *data, size_t dataLen, const char *key, size_t keyLength, char *output, int outputLen);
+	static int urlEncode(const char *url, char *output, size_t outputLength);
 };

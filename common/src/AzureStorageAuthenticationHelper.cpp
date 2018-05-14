@@ -579,6 +579,55 @@ int AzureStorageAuthenticationHelper::decodeBase64(const char *input, char * out
 	return requiredLen;
 }
 
+//
+// Encode string for URL
+int AzureStorageAuthenticationHelper::urlEncode(const char *url, char *output, size_t outputLength)
+{
+	static const char *hex = "0123456789ABCDEF";
+	static const char *specials = "-._";
+	int currentLength = 0;
+  
+	if (output != NULL && outputLength != 0)
+		*output = 0x00;
+	else 
+		outputLength = 0;
+  
+	for (int i = 0; i < strlen(url); i++)
+	{
+		if (('a' <= url[i] && url[i] <= 'z') ||
+			('A' <= url[i] && url[i] <= 'Z') ||
+			('0' <= url[i] && url[i] <= '9') ||
+			(NULL != strchr(specials, url[i])))
+		{
+			if (currentLength + 1 < outputLength)
+			{
+				output[currentLength++] = url[i];
+				output[currentLength] = 0x00;
+			}
+		}
+		else
+		{
+			if (currentLength + 1 < outputLength)
+			{
+				output[currentLength++] = '%';
+				output[currentLength] = 0x00;
+			}
+				
+			if (currentLength + 1 < outputLength)
+			{
+				output[currentLength++] = hex[url[i] >> 4];
+				output[currentLength] = 0x00;
+			}
+				
+			if (currentLength + 1 < outputLength)
+			{
+				output[currentLength++] = hex[url[i] & 15];
+				output[currentLength] = 0x00;
+			}
+		}
+	}
+}
+
 // Helper function to hash data with key and return in output encoded in Base64
 int AzureStorageAuthenticationHelper::hashIt(const char *data, size_t dataLen, const char * key, size_t keyLength, char *output, int outputLen)
 {
